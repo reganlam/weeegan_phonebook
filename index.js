@@ -21,6 +21,10 @@ const requestLogger = (request, response, next) => {
 
 app.use(requestLogger);
 
+app.get("/", (request, response) => {
+	response.send("<h1>This is the testing page. You shouldn't see this.</h1>");
+});
+
 app.get("/api/persons", (req, res, next) => {
 	Person.find({})
 		.then((persons) => {
