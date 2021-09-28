@@ -177,7 +177,9 @@ const errorHandler = (error, request, response, next) => {
 // this has to be the last loaded middleware.
 app.use(errorHandler);
 
-const PORT = process.env.SERVER_PORT;
+const PORT =
+	process.env.NODE_ENV === "dev" ? process.env.DEV_PORT : process.env.PORT;
+
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
